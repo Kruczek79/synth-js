@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscylator</title>
+    <link rel="stylesheet" href="styles/main.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <fielde class="content">
+            <fieldset class="waveControl">
+                <legend>
+                    <div class="blue"></div>VOICING
+                </legend>
+                <canvas id="wave"></canvas> <br>
+
+                <div class="wrapper v">
+                    WAV<input type="range" id="waveType" min="0" max="3" value="3">
+                </div>
+                <datalist id="waveForms">
+                    <option value="0">SIN</option>
+                    <option value="1">SQU</option>
+                    <option value="2">TRI</option>
+                    <option value="3">SAW</option>
+                </datalist>
+            </fieldset>
+
+            <fieldset class="adjustControl">
+                <legend>
+                    <div class="blue"></div>ADSR
+                </legend>
+                <div class="wrapper">
+                    ATK<input type="range" id="atk" min="0" max="2" step="0.1" value="0">
+                </div>
+                <div class="wrapper">
+                    DEC<input type="range" id="dec" min="0" max="2" step="0.1" value="0">
+                </div>
+                <div class="wrapper">
+                    SUS<input type="range" id="sus" min="0" max="1" step="0.1" value="1">
+                </div>
+                <div class="wrapper">
+                    REL<input type="range" id="rel" min="0" max="2" step="0.1" value="0.5">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="filterControl">
+                <legend>
+                    <div class="blue"></div>LOWPASS FILTER
+                </legend>
+                <div class="wrapper">
+                    OFF/ON<input type="range" id="filterSwitch" min="0" max="1" value="0">
+                </div>
+                <div class="wrapper">
+                    FRQ<input type="range" id="frq" min="0.1" max="1" step="0.1" value="0.1">
+                </div>
+                <div class="wrapper">
+                    Q<input type="range" id="q" min="0" max="1" step="0.1" value="0">
+                </div>
+
+            </fieldset>
+            <fieldset class="volumeControl">
+                <legend>
+                    <div class="blue"></div>MASTER
+                </legend>
+
+                <div class="wrapper">
+                    VOL<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+                </div>
+
+            </fieldset>
+
+            <fieldset class="echoControl">
+                <legend>
+                    <div class="blue"></div>ECHO FX
+                </legend>
+                <div class="wrapper">
+                    OFF/ON<input type="range" id="echoSwitch" min="0" max="1" value="0">
+                </div>
+                <div class="wrapper">
+                    TIME<input type="range" id="time" min="0" max="0.5" step="0.01" value="0">
+                </div>
+                <div class="wrapper">
+                    FDBK<input type="range" id="fdbk" min="0" max="0.80" step="0.01" value="0.80">
+                </div>
+            </fieldset>
+            <div class="piano">
+
+            </div>
+            <fieldset class="analyser">
+                <legend>
+                    <div class="blue"></div>ANALYSER
+                </legend>
+                <canvas id="analyser"></canvas>
+            </fieldset>
+        </fielde>
+
+    </div>
+    <script src="js/Graph.js"></script>
+    <script src="js/pianoGen.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

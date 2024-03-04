@@ -1,0 +1,180 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #202020;
+	color: #fff;
+}
+/* Main element*/
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Content element*/
+.content {
+	width: 860px;
+	height: 660px;
+	background-color: #1d1d1d;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: 283px 283px 283px;
+	grid-template-rows: 280px 150px;
+	grid-template-areas:
+		"wave adsr filter"
+		"vol adsr echo"
+		"pi pi an";
+	row-gap: 5px;
+}
+/* Sections */
+fieldset {
+	font-family: consolas;
+	border-color: #595959;
+	border-style: solid;
+}
+/* Top text on sections */
+fieldset legend {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+/* Box next to text*/
+.blue {
+	width: 10px;
+	height: 10px;
+	background-color: #0a9282;
+	margin-right: 5px;
+}
+.waveControl {
+	grid-area: wave;
+}
+.adjustControl {
+	grid-area: adsr;
+}
+.filterControl {
+	grid-area: filter;
+}
+.volumeControl {
+	grid-area: vol;
+}
+.echoControl {
+	grid-area: echo;
+}
+/* piano element */
+.piano {
+	grid-area: pi;
+	display: flex;
+	height: 150px;
+	border-top: 5px inset #292929;
+	border-left: 5px inset #292929;
+	border-right: 5px solid #2c2c2c;
+	border-bottom: 5px solid #2c2c2c;
+	margin-top: 20px;
+}
+/* analyser element */
+.analyser {
+	grid-area: an;
+	height: fit-content;
+	width: fit-content;
+	margin: 10px 0px 10px 10px;
+}
+/* canvas of analyser */
+.analyser canvas {
+	width: 235px;
+	border-top: 5px inset #292929;
+	border-left: 5px inset #292929;
+	border-right: 5px solid #2c2c2c;
+	border-bottom: 5px solid #2c2c2c;
+	background-color: rgb(23, 0, 0);
+}
+
+/* notes on piano */
+.whiteNote {
+	width: 81px;
+	height: 100%;
+	text-align: center;
+	border-right: 2px solid black;
+	background-color: #efefef;
+	color: #575757;
+	user-select: none;
+	cursor: pointer;
+}
+.whiteNote.active {
+	background-color: #cacaca;
+}
+.whiteNote:last-of-type {
+	border: none;
+}
+.whiteNote > span {
+	width: 100%;
+	margin-top: 130px;
+	display: block;
+}
+.blackNote {
+	width: 43px;
+	height: 80px;
+	background-color: #323232;
+	color: #626262;
+	margin-left: -21.5px;
+	margin-right: -21.5px;
+	z-index: 1;
+	text-align: center;
+	user-select: none;
+	cursor: pointer;
+}
+.blackNote.active {
+	background-color: #252525;
+}
+
+/* Canvas of wave*/
+.waveControl canvas {
+	background-color: #141414;
+	max-width: 250px;
+}
+/* wrapper for sliders and labels */
+.wrapper {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	font-weight: bold;
+}
+
+/* Range slider */
+input[type="range"] {
+	margin-left: 10px;
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent;
+	width: 100%;
+
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		width: 40px;
+		height: 20px;
+		background-image: linear-gradient(
+			90deg,
+			rgba(67, 67, 67, 1) 40%,
+			rgba(190, 77, 35, 1) 50%,
+			rgba(67, 67, 67, 1) 61%
+		);
+		border: 3px outset black;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+	&::-webkit-slider-runnable-track {
+		background: linear-gradient(180deg, #1a1a1a 0%, #212121 100%);
+		border-top: 3px inset #292929;
+		border-left: 3px inset #292929;
+		border-right: 3px solid #181818;
+		border-bottom: 3px solid #2c2c2c;
+	}
+}
+
+datalist {
+	display: flex;
+	color: white;
+	justify-content: space-between;
+	margin-left: 40px;
+}
