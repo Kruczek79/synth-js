@@ -27,3 +27,5 @@ notesSymb.forEach((elem) => {
 });
 
 piano.innerHTML += html;
+
+const notesElem = document.querySelectorAll(".note");
