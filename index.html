@@ -1,108 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <title>Synthesizer</title>
     <meta charset="UTF-8">
+
+    <meta name="author" content="Aleksander Kamiński">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oscylator</title>
+
+    <!-- OG META-->
+    <meta property="og:title" content="Synthesizer">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="kruczek79.github.io/synth-js/">
+    <!-- CSS -->
     <link rel="stylesheet" href="styles/main.css">
-
 </head>
-
 <body>
     <div class="container">
-        <fielde class="content">
+        <fieldset class="content">
+            <!-- SUB -->
             <fieldset class="waveControl">
                 <legend>
-                    <div class="blue"></div>VOICING
+                    <span class="box blue"></span>
+                    VOICING
                 </legend>
-                <canvas id="wave"></canvas> <br>
-
+                <canvas id="wave">
+                    Your browser doesn't support Canvas element.
+                </canvas>
+                <br>
                 <div class="wrapper v">
-                    WAV<input type="range" id="waveType" min="0" max="3" value="3">
+                    <span title="Wave">WAV</span>
+                    <input type="range" id="waveType" min="0" max="3" value="3">
                 </div>
                 <datalist id="waveForms">
-                    <option value="0">SIN</option>
-                    <option value="1">SQU</option>
-                    <option value="2">TRI</option>
-                    <option value="3">SAW</option>
+                    <option value="0" title="Sine Wave">SIN</option>
+                    <option value="1" title="Square Wave">SQU</option>
+                    <option value="2" title="Triangle Wave">TRI</option>
+                    <option value="3" title="Saw Wave">SAW</option>
                 </datalist>
             </fieldset>
-
+            <!-- Attack Delay Sustain Release -->
             <fieldset class="adjustControl">
                 <legend>
-                    <div class="blue"></div>ADSR
+                    <div class="box purple"></div>
+                    <span title="Attack Delay Sustain Release">ADSR</span>
                 </legend>
                 <div class="wrapper">
-                    ATK<input type="range" id="atk" min="0" max="2" step="0.1" value="0">
+                    <span title="Attack">ATK</span>
+                    <input type="range" id="atk" min="0" max="2" step="0.1" value="0">
                 </div>
                 <div class="wrapper">
-                    DEC<input type="range" id="dec" min="0" max="2" step="0.1" value="0">
+                    <span title="Delay">DEC</span>
+                    <input type="range" id="dec" min="0" max="2" step="0.1" value="0">
                 </div>
                 <div class="wrapper">
-                    SUS<input type="range" id="sus" min="0" max="1" step="0.1" value="1">
+                    <span title="Sustain">SUS</span>
+                    <input type="range" id="sus" min="0" max="1" step="0.1" value="1">
                 </div>
                 <div class="wrapper">
-                    REL<input type="range" id="rel" min="0" max="2" step="0.1" value="0.5">
+                    <span title="Release">REL</span>
+                    <input type="range" id="rel" min="0" max="2" step="0.1" value="0.5">
                 </div>
-
             </fieldset>
-
+            <!-- LOWPASS FILTER -->
             <fieldset class="filterControl">
                 <legend>
-                    <div class="blue"></div>LOWPASS FILTER
+                    <span class="box purple"></span>
+                    <span>LOWPASS FILTER</span>
                 </legend>
                 <div class="wrapper">
-                    OFF/ON<input type="range" id="filterSwitch" min="0" max="1" value="0">
+                    <span title="Disable/Enable lowpass filter">OFF/ON</span>
+                    <input type="range" id="filterSwitch" min="0" max="1" value="0">
                 </div>
                 <div class="wrapper">
-                    FRQ<input type="range" id="frq" min="0.1" max="1" step="0.1" value="0.1">
+                    <span title="Lowpass filter frequency">FRQ</span>
+                    <input type="range" id="frq" min="0.1" max="1" step="0.1" value="0.1">
                 </div>
                 <div class="wrapper">
-                    Q<input type="range" id="q" min="0" max="1" step="0.1" value="0">
+                    <span title="Lowpass filter Q factor">Q</span>
+                    <input type="range" id="q" min="0" max="1" step="0.1" value="0">
                 </div>
-
             </fieldset>
+            <!-- MASTER -->
             <fieldset class="volumeControl">
                 <legend>
-                    <div class="blue"></div>MASTER
+                    <span class="box red"></span>
+                    <span>MASTER</span>
                 </legend>
-
                 <div class="wrapper">
-                    VOL<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+                    <span title="Master volume">VOL</span>
+                    <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
                 </div>
-
             </fieldset>
-
+            <!-- ECHO -->
             <fieldset class="echoControl">
                 <legend>
-                    <div class="blue"></div>ECHO FX
+                    <span class="box purple"></span>
+                    <span>ECHO FX</span>
                 </legend>
                 <div class="wrapper">
-                    OFF/ON<input type="range" id="echoSwitch" min="0" max="1" value="0">
+                    <span>OFF/ON</span>
+                    <input type="range" id="echoSwitch" min="0" max="1" value="0">
                 </div>
                 <div class="wrapper">
-                    TIME<input type="range" id="time" min="0" max="0.5" step="0.01" value="0">
+                    <span>TIME</span>
+                    <input type="range" id="time" min="0" max="0.5" step="0.01" value="0">
                 </div>
                 <div class="wrapper">
-                    FDBK<input type="range" id="fdbk" min="0" max="0.80" step="0.01" value="0.80">
+                    <span>FDBK</span>
+                    <input type="range" id="fdbk" min="0" max="0.80" step="0.01" value="0.80">
                 </div>
             </fieldset>
+            <!-- PIANO -->
             <div class="piano">
-
+                <!-- AUTO CONTENT GENERATION -->
             </div>
+            <!-- WAVEFORM -->
             <fieldset class="analyser">
                 <legend>
-                    <div class="blue"></div>ANALYSER
+                    <span class="box red"></span>
+                    <span>WAVEFORM</span>
                 </legend>
-                <canvas id="analyser"></canvas>
+                <canvas id="analyser">
+                    Your browser doesn't support Canvas element.
+                </canvas>
             </fieldset>
-        </fielde>
-
+        </fieldset>
     </div>
     <script src="js/Graph.js"></script>
     <script src="js/pianoGen.js"></script>
     <script src="js/main.js"></script>
 </body>
-
 </html>
